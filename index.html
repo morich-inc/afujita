@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>藤田陽大 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>藤田陽大 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. カイテク株式会社</a>
+  <a href="#k2">2. 株式会社digdig（旧社名：株式会社FUNEE）</a>
+  <a href="#k3">3. 株式会社パンクチュアル</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">HR(採用責任者候補)</span><span class="badge badge-blue">未上場 N-1</span></div>
+  <div class="co-name">カイテク株式会社</div>
+  <div class="co-url"><a href="https://corp.caitech.co.jp/" target="_blank">https://corp.caitech.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒160-0022 東京都新宿区新宿1丁目23番1号 THE PORTAL 新宿御苑 2F</td></tr><tr><th>設立</th><td>2018年2月9日</td></tr><tr><th>従業員数</th><td>役員含め約52名</td></tr><tr><th>上場区分</th><td>未上場（N-1）</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>★IPO準備フェーズ：N-1期</li><li>★社長リレーション</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">「2050年に世界一幸せな超高齢社会をつくる」というビジョンのもと、介護・医療領域の人材不足解消に挑む2018年設立のHRテック企業。介護・医療・看護領域に特化した単発・スポットワークマッチングサービス「カイテク」を展開しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>「2050年に世界一幸せな超高齢社会をつくる」というビジョンのもと、介護・医療領域の人材不足解消に挑む2018年設立のHRテック企業で、介護・医療・看護領域に特化した単発・スポットワークマッチングサービス「カイテク」を展開しています。</p><p>慢性的な人材不足という社会構造課題に対し、有資格者限定という独自モデルでアプローチしている点や勤務後5分以内の即時ペイメントや、足りないシフト枠をスポットワークと連携する仕組みなど、現場起点のプロダクト開発を進め、導入事業所は約2.1万、アプリDLは約118万人まで拡大。業界内では圧倒的なシェアNo.1（タイミー社の約4倍）のインフラとして独走状態をキープ、そして直近3期連続黒字、営業利益率10％超と、成長性と収益性を両立している点も特徴でIPOを目指しています。</p><p>今後は介護・医療周辺領域への展開や新規事業、M&Aも視野に入れ、日本で成功モデルを築いた先の海外展開も見据えています。エリア展開も進行中で、介護人材市場の流動化を促進するインフラとしてのポジションを築きつつあります。</p><p>デロイトトーマツグループが2026年1月に発表したテクノロジー・メディア・通信業界における成長率のランキング「Technology Fast 50 2025 Japan」において、過去3決算期の収益（売上高）に基づく成長率1,616％を記録し、見事１位を受賞！</p><p><strong>代表取締役社長　武藤 高史氏</strong><br>1988年生まれ。立命館大学大学院情報理工学研究科を修了後、新卒で富士ゼロックス株式会社に入社後、エムスリー株式会社に参画。祖父母の介護をきっかけに、日本が直面する介護・医療人材不足という社会課題の解決を志し、2018年に同社を創業。外部では講演や書籍寄稿なども行い、介護・医療分野の新しい働き方を提案する起業家としても注目されています。</p><p>2018年2月9日の「福祉の日」に創業し、現在従業員数は役員含め約52名。2050年に「世界一幸せな超高齢社会」を目指し、「歳を重ねるほど、笑顔の人が増える社会」の実現、日本が世界のロールモデルになるための「立役者」にカイテクの全従業員で取り組んでいらっしゃいます。直近3期連続で黒字化、営業利益率は10％超と黒字・利益率も確保している成長著しい企業です！</p><p><strong>カイテク社の強みは以下3点です</strong></p><ul><li><strong>① 競合を4倍差でリードする、現場起点の強固な事業優位性</strong><br>登録ワーカー約100万人以上、登録施設数20,000所以上を有する国内最大級のプラットフォーム。資格認証・相互評価による品質担保により、面接不要でも現場が安心して利用できる仕組みを構築。大手競合が資金を投じても切り崩しにくい、現場密着型の高いシェアと顧客ロイヤルティを誇ります。</li><li><strong>② 少数精鋭で高成長を実現する、圧倒的な生産性と利益体質</strong><br>急成長企業と比較しても遜色ない成長軌道を描きながら、社員数は約10分の1という少数精鋭体制で事業成長を実現。一人当たりの生産性・利益率が非常に高く、限られた人数で大きな事業インパクトを生み出せる環境。優先順位を明確にし、無駄な施策にリソースを割かない合理的な経営体質が強み。</li><li><strong>③ 5年10年をかけて向き合える、社会的意義の大きなバーティカル領域</strong><br>少子高齢化に伴う介護・医療現場の人材不足という、日本社会の構造課題に正面から向き合う事業領域。流行りのAIキーワードに依存せず、テクノロジーと人間のマッチングの仕組みを磨き続けることで、潜在有資格者の復職支援や現場負担の軽減に貢献できる、長期で人生を懸ける価値のあるテーマに取り組んでいます。</li></ul><p>現状の課題は、既存事業は顕著に成長しているが、IPOを目指すなかで第二・第三の収益柱の創出が不可欠。新規事業立ち上げ・M&A検討を同時進行で進めるための組織強化・採用が課題となっています。組織は非常にフラットで、20代〜40代のメンバーが全員プレイヤーとして経営者マインドを持ち、当事者意識を持って仲間や会社全体のために主体的に行動されているカルチャーです。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 HR（採用責任者候補）</div>
+          <div class="job-preview">全採用領域の戦略立案から実行・チームマネジメントを担うIPO準備フェーズの一人目HR責任者ポジション</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>■募集背景</strong></p><p>日本初の介護看護スポットワーク「カイテク」は、業界の先駆者として約5年の実績があります。今ではエッセンシャルワーカー様が20万人以上、事業所様（法人）が6,000所以上のお客様にご利用いただくサービスに成長して参りました。しかし、全国の介護事業者数は30万を超えるとも言われており、巨大なマーケットの1%にもリーチ出来ていない状態です。そして本マーケットは2021年11兆円⇒2040年には27兆円にもなる予測であり急成長マーケットです。弊社のVISIONは「超高齢社会を成功に導く」という前人未到の難題に挑む事を掲げており、今後事業と組織を拡大し、再現性ある成長にトライしていくことを志向しています。現状は、経営・マネジメントレイヤーと外部パートナーが協力しながら採用活動を進めております。今後のさらに採用のアクセルを踏んでいくために、採用のリーダーとしてHR/採用のドメインから事業・組織の拡大に貢献していただきたいと考えております。</p><p><strong>■業務内容</strong></p><p>全採用領域の戦略立案から実行および採用チームのマネジメントを担当していただきます。経営層や各プロジェクトリーダーと連携し、採用活動をリードしていただくポジションです。</p><ul><li>中途採用のリーダーとしてダイレクトスカウト・エージェントなど複数のチャネルを活用した成果創出</li><li>定量・定性情報に基づく採用プロセスの最適化と効率化</li><li>事業計画達成に向けた採用計画の策定/進捗管理</li><li>採用ニーズ把握、採用要件定義、ターゲットの可視化</li><li>経営・マネジメントメンバーと連携し採用課題の解決策定〜実行、レポーティング</li><li>外部パートナーと連携した採用オペレーションの推進</li></ul><p><strong>■ポジションの魅力</strong></p><ul><li>事業成長しているフェーズで経営に近い立場で業務に携わることができる（一人目のHRとして裁量を持ってプレーができる）</li><li>組織の文化や仕組みづくりから携わり、組織と自身の成長を同時に感じられる</li><li>誰もが知っている介護人材不足（2040年には介護69万人不足）という極めて社会的意義の高い課題解決に取り組める</li></ul><p><strong>■必須スキル</strong></p><ul><li><span class='tag tag-must'>MUST</span> カイテクのVision、Mission、Valueに共感いただける方</li><li><span class='tag tag-must'>MUST</span> IT業界の中途採用における実務経験（3年以上）</li><li><span class='tag tag-must'>MUST</span> 採用戦略の設計からアクション実行</li><li><span class='tag tag-must'>MUST</span> 採用活動の改善業務の推進</li><li><span class='tag tag-must'>MUST</span> Tech職種やハイレイヤー人材の採用知見と経験</li><li><span class='tag tag-must'>MUST</span> HRや採用領域において責任者またはリーダーとして組織拡大を牽引されたご経験</li></ul><p><strong>■歓迎スキル</strong></p><ul><li><span class='tag tag-want'>WANT</span> 分析、業務改善の経験（定量、定性、数値分析から企画・フロー設計まで落とし込める方）</li><li><span class='tag tag-want'>WANT</span> 経営層・部門長と対等に話せる知識とスキル</li><li><span class='tag tag-want'>WANT</span> 採用広報（メディア運営、イベント出展等）に関わる業務経験</li></ul><p><strong>■求める人物像</strong></p><ul><li>折衝力：相手の質問を深堀りできて、相手の人間性/スキルを引き出すのが得意な方</li><li>リーダーシップ：課題の本質を捉え、周りを巻き込みながら成果追求および上長や経営陣に提案や改善に向けた活動を主体性を持ってできる方</li><li>高速PDCA：事業・組織・顧客への提供価値や生産性の最大化に目的意識を置き、ポジションやキャリアに拘らず学習とアンラーニングを両立できる方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">✅ 副業条件によって可</span></div>
+      </div>
+    </div>
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 事業開発</div>
+          <div class="job-preview">新規事業立ち上げ・M&A戦略立案から実行まで、代表直下で会社の未来を創る経営中核ポジション</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>■募集背景・事業ロードマップと今後の展開</strong></p><p>「スポットワーク」から、介護・医療・福祉の総合インフラへ。当社は現在、介護・医療現場の人材不足を解消する「スポットワーク（HR事業）」を起点に、業界のあり方を変える多角的な事業展開を加速させています。</p><p><strong>現在のフェーズ：圧倒的成長と領域拡大</strong><br>現在、主軸の「スポットワーク事業」および現場の生産性を高める「SaaS（HR Tech）事業」が急速にグロースしています。介護職・看護師・薬剤師の支援に加え、今後は医師や医療事務領域への拡大、AIを活用した勤怠・シフト管理の高度化を推進中です。</p><p><strong>今後の展望：業界の課題を垂直・水平に解決する</strong><br>単なる人材マッチングに留まらず、中長期的に以下の事業群を立ち上げ、介護・医療に関わるすべてのステークホルダーを支えるプラットフォームを目指します。</p><p><strong>■ポジションの役割</strong></p><p>現在は「介護×HR」のイメージが強いかもしれませんが、今後の構想は「病院、障害福祉、薬局、クリニック」といった医療・福祉全般、そして「金融、M&A、ロボティクス」まで広がっています。「スポットワーク」という強力な接点を武器に、次々と新しい事業が生まれるエキサイティングな環境で、業界のDXと未来を一緒に創っていきませんか？</p><p><strong>■業務内容</strong></p><p>▼新規事業・経営戦略</p><ul><li>新規事業・新部門・新プロジェクトのインキュベーション（立ち上げ）業務</li><li>全社中長期経営戦略の立案、事業計画の策定、および経営数値のモニタリング</li><li>既存事業と新規事業の部門横断的なシナジー創出・推進</li></ul><p>▼M&A関連</p><ul><li>M&A戦略の立案、ターゲット選定、デューデリジェンス、交渉、実行</li><li>M&A後のPMI（Post-Merger Integration）の計画策定および実行の最高責任</li><li>既存事業とM&A先との部門横断的なシナジー創出</li></ul><p><strong>■ポジションの魅力</strong></p><ul><li>【圧倒的な市場ニーズとプロダクトの強さ】「Technology Fast 50 2025 Japan」日本1位を記録。人手不足が深刻な介護業界で「不可欠なサービス」を提供しているため、M&Aや事業提携の交渉においても強力な追い風があります。</li><li>【裁量と責任 — 経営の中核】代表直下で全社を動かすダイナミズムを日々実感。</li><li>【当社の未来を描く — 新規ポジション】会社の成長を担う全く新しいポジション。2040年に向けた超高齢社会という社会課題に対し、事業を通じてダイレクトにインパクトを与えられます。</li><li>【キャリアの代表となる非連続成長の実現】「自らの手で会社を成長へと導いた」という具体的かつ強烈な成功体験をキャリアに刻めます。あなたの力が会社を動かす最大のインパクトを実感できるポジションです。</li></ul><p><strong>■必須スキル・経験</strong></p><ul><li><span class='tag tag-must'>MUST</span> 新規事業開発またはM&Aの経験</li><li><span class='tag tag-must'>MUST</span> オーナー経営者と対等に議論し、ビジョンを具体的な事業計画に落とし込み、実行した実績</li><li><span class='tag tag-must'>MUST</span> 50億～500億、あるいはそれ以上の規模への「グロースフェーズ」を中核として牽引した実績</li><li><span class='tag tag-must'>MUST</span> M&Aの実行（ソーシングからクロージングまで）およびPMI（統合作業）のハンズオン経験</li></ul><p><strong>■歓迎スキル・経験</strong></p><ul><li><span class='tag tag-want'>WANT</span> 戦略コンサルティングファームにおける戦略立案、またはデューデリジェンスの経験</li><li><span class='tag tag-want'>WANT</span> PEファンドやベンチャーキャピタルでの投資およびバリューアップの経験</li><li><span class='tag tag-want'>WANT</span> 財務（ファイナンス）および法務（リーガル）に関する高度な知識</li></ul><p><strong>■求める人物像</strong></p><ul><li>社会課題の構造を理解し、実現まで粘り強く伴走できる方</li><li>社内外のステークホルダーを巻き込み、変革を推進できる高い影響力とコミュニケーション能力を持つ方</li><li>スタートアップ環境においてスピード感と柔軟性をもって行動できる方</li><li>高い倫理観と、数字に対する強いコミットメントを両立できる方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">✅ 副業条件によって可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://corp.caitech.co.jp/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://prtimes.jp/main/html/rd/p/000000032.000043426.html" target="_blank">📰 Technology Fast 50 受賞記事</a><a class="lbtn lbtn-out" href="https://docs.google.com/presentation/d/e/2PACX-1vSQUpcwF2n-OuSsajkugW0ixfr_QI5FPRfTt70YPQU7u5XTiwUZitHswzrjc6GnOJvzJ58HcQhQI27_/pub?start=false&loop=false&delayms=3000&slide=id.g3884d2b72ef_0_701" target="_blank">📊 会社資料</a></div>
+</div></div>
+
+<div class="card" id="k2"><div class="card-inner">
+  <div class="badges"><span class="badge">採用責任者（VP of HR）</span><span class="badge badge-blue">未上場 N-4以前</span></div>
+  <div class="co-name">株式会社digdig（旧社名：株式会社FUNEE）</div>
+  <div class="co-url"><a href="https://digdig.inc/" target="_blank">https://digdig.inc/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒150-0046 東京都渋谷区松濤１丁目２６−４ 松涛パークハイツ 302号室</td></tr><tr><th>上場区分</th><td>未上場（N-4以前）</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>★IPO準備中</li><li>★社長リレーション</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">「日常に心躍る瞬間を増やし、ファッションが地球と共存できるインフラを創る」という壮大なビジョンを掲げ、急成長中のファッションフリマアプリ「digdig（ディグディグ）」を運営しているスタートアップ。リリースからわずか3ヶ月で10万ダウンロードを突破、運営SNSの総フォロワー数は100万人を超えるなど、圧倒的な勢いで成長中。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>「日常に心躍る瞬間を増やし、ファッションが地球と共存できるインフラを創る」という壮大なビジョンを掲げ、急成長中のファッションフリマアプリ「digdig（ディグディグ）」を運営しているスタートアップ。</p><p>digdigはフリマアプリではなく、出品時の面倒な採寸・撮影・梱包・発送を全て代行するという革新的なサービスモデルで、Z世代を中心に熱狂的な支持を集め、リリースからわずか3ヶ月で10万ダウンロードを突破、運営SNSの総フォロワー数は100万人を超えるなど、圧倒的な勢いで成長中。この成長は、長年培ってきたSNSメディア運営やアパレルブランドへのコンサルティングで培った若者カルチャーへの深い洞察とマーケティング力があるからこそ。</p><p>ユーザーの「売りたい」「買いたい」「ファッションを楽しみたい」という純粋な気持ちをエンパワーし、そして「洋服の循環」というサステナブルな未来へと直結します。売れなかった服はリサイクル工場と提携し資源として再活用するなど、本気で「お洒落が持続可能な社会」の実現を目指しています。</p><p>メルカリの巨大なフリマ二次流通市場に対し、ZOZOやAmazonのファクトリーオートメーションの仕組みで切り込みマーケットシェアを取りに行っているto Cスタートアップです。『digdig（ディグディグ）』というファッション特化フリマアプリを展開し、「どこよりも楽に出品して希望価格で売れる」ということで、Z世代には認知度が高いです。</p><p>出品者は届いた袋に出品したい服を入れて集荷してもらうだけで、面倒な検品・採寸・撮影や販売後の発送などはすべて同社が代行しています（検品はAIを駆使）。一日1000着前後が日々届いており、約7割が検品を通過し販売、3ヵ月の販売期間でだいたい4～5割が売却でき、売れ残りは繊維工場に使ってもらったりオフラインで販売するなど、廃棄ゼロでリユースできている点が素晴らしいです！ただのアパレルプラットフォームではなく、「循環型のアパレル産業を作っていく」というのが同社のゴールです。</p><p>どんなに「環境に良い服」を作ったとしても、最も環境に良いのは「もう服を作らないこと」というぐらい、アパレル産業は環境汚染に悪影響を及ぼしているとも言われている中、エコロジー観点でも大変オススメしたい企業です。</p><p><strong>代表取締役　楊 承峻（やん すんじゅん）氏</strong><br>韓国籍の両親の元、日本で生まれ小学校〜中学校は韓国、高校はシンガポールで生活。大学進学のタイミングである2015年に日本へ帰国、明治大学大学院修士課程修了。学部在学中にZOZOテクノロジーズ、金山代表直下で新規事業の立上げに着手。大手から、創業間もないスタートアップまで計4社で、営業・マーケティング・新規事業の立上げを経験する。特にメディア運用・SNSマーケティングに精通。メディア事業部の統括・開発事業部のPdMを担当。現在28歳。韓国籍のご両親のもとに日本で生まれ、小学校〜中学校は韓国の日本人学校で過ごす際、当時は反日感情が高まっている時期だったこともありご苦労されたと伺っております。どちらにもルーツをお持ちの身として、大好きなアパレルを中心に、「お洒落が持続可能な社会」を作って世界の橋渡しをしたい…と熱い想いをお持ちの、大変素敵な経営者です！</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 採用責任者（VP of HR）</div>
+          <div class="job-preview">シリーズA急成長フェーズで全社採用戦略の立案からチームビルディングまでを牽引する人事責任者ポジション</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>■ポジション概要</strong></p><p>シリーズAを経て急成長中のフェーズです。プロダクト・CS・物流・マーケティングなど全方位で採用ニーズが高まる中、採用戦略の立案からチームビルディングまでを牽引できる人事責任者（VP of HR）を募集します。</p><p><strong>■業務内容</strong></p><ul><li>全社の中長期人員計画の立案・見直し（経営戦略に基づいた採用要件設計）</li><li>中途採用戦略の企画・実行（PdM／エンジニア／CS／オペレーション等）</li><li>採用チャネルの開拓と運用（リファラル、エージェント、媒体運用、スカウト）</li><li>採用ブランディング（採用ページ、SNS活用、候補者体験設計）</li><li>ダイレクトリクルーティングおよび選考プロセスの改善</li><li>評価制度・オンボーディング設計のサポート（他HR領域と連携）</li><li>経営陣や各部門責任者との要件すり合わせ・進捗管理</li><li>HRチームの立ち上げ・育成・マネジメント</li></ul><p><strong>■必須スキル・経験</strong></p><ul><li><span class='tag tag-must'>MUST</span> 中途採用における実務経験（6年以上）</li><li><span class='tag tag-must'>MUST</span> ビジネス職・プロダクト職いずれかでの採用成功実績</li><li><span class='tag tag-must'>MUST</span> 経営・事業戦略と連動した人員計画や採用要件設計の経験</li><li><span class='tag tag-must'>MUST</span> 各部門責任者との連携・調整をリードした経験</li><li><span class='tag tag-must'>MUST</span> 候補者体験（CX）を意識した採用プロセス設計の感度</li></ul><p><strong>■歓迎スキル・経験</strong></p><ul><li><span class='tag tag-want'>WANT</span> スタートアップ／IT系企業での採用責任者 or HRBPの経験</li><li><span class='tag tag-want'>WANT</span> エンジニア／PdMなどテック系人材の採用知見</li><li><span class='tag tag-want'>WANT</span> 採用ブランディング（SNS運用、コンテンツ制作）の経験</li><li><span class='tag tag-want'>WANT</span> HRチームの立ち上げ・マネジメント経験</li><li><span class='tag tag-want'>WANT</span> 組織カルチャーづくり・制度設計など採用以外のHR領域の経験</li><li><span class='tag tag-want'>WANT</span> ファッションや循環型社会への関心・共感</li></ul><p><strong>■求める人物像</strong></p><ul><li>「急成長スタートアップの"人"をつくる」に強い共感がある方</li><li>自己だけでなく、他者や社会にベクトルが向いている方（ex. より良い社会を実現したいと心の底から思っている方）</li><li>スタートアップの環境を楽しみ、自己と会社両方を成長させるという意欲と気概のある方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏢 基本出社</span><span class="pill">✅ 副業可</span></div>
+      </div>
+    </div>
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 COO候補</div>
+          <div class="job-preview">CEOと二人三脚で経営戦略から組織開発まで全社を牽引するCOO候補ポジション</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>■ポジション概要</strong></p><p>COO候補として、事業・組織への戦略・戦術立案・執行にコミットいただきます。</p><p><strong>■業務内容（事業・組織状況に応じて臨機応変にコミットするイメージ）</strong></p><ul><li>経営戦略の立案・実行（CEOと二人三脚でグロース全体を牽引）</li><li>プロダクト開発の優先順位設計とロードマップ管理（PMチームとの連携）</li><li>KPI設計と業務オペレーションの改善（GMV最大化を主軸に）</li><li>カスタマーサクセス・CS/物流・カスタマーサポートなどの業務基盤構築</li><li>マーケティング戦略の企画実行（広告施策、キャンペーンの意思決定）</li><li>採用戦略の立案</li><li>組織開発（チーム規模拡大に向けた体制整備）</li><li>取締役会・投資家向け資料の作成／戦略共有</li></ul><p><strong>■必須スキル・経験</strong></p><ul><li><span class='tag tag-must'>MUST</span> 事業会社、スタートアップ、コンサルティング会社などにおいて10年以上の事業責任者・実務経験</li><li><span class='tag tag-must'>MUST</span> BtoB、BtoC業種でのビジネス部門のマネジメント経験</li><li><span class='tag tag-must'>MUST</span> トップタレントであることを示すスピード昇進経験</li><li><span class='tag tag-must'>MUST</span> 会社または事業全体におけるPLまたは集客数値責任を負ったご経験</li><li><span class='tag tag-must'>MUST</span> プロダクトマネジメントやオペレーション改善に強い関与をした実績</li></ul><p><strong>■歓迎スキル・経験</strong></p><ul><li><span class='tag tag-want'>WANT</span> D2CやEC、フリマアプリ、マーケットプレイス型プロダクトでの業務経験（特に物流面）</li><li><span class='tag tag-want'>WANT</span> PMF〜シリーズA以降のグロースフェーズに関わった経験</li><li><span class='tag tag-want'>WANT</span> プロダクトデザイン・エンジニアリングへの理解</li><li><span class='tag tag-want'>WANT</span> 自ら課題を発見し、0→1で仕組みをつくってきた経験</li><li><span class='tag tag-want'>WANT</span> 洋服が好きな方</li></ul><p><strong>■求める人物像</strong></p><ul><li>ファッションやサステナビリティ領域への共感</li><li>自己だけでなく、他者や社会にベクトルが向いている方（ex. より良い社会を実現したいと心の底から思っている方）</li><li>スタートアップの環境を楽しみ、自己と会社両方を成長させるという意欲と気概のある方</li><li>仕事に主体的にチャレンジできる方</li><li>人とのコミュニケーションが好きな方</li><li>０から新しい仕組みを作ることに面白さを感じられる方</li><li>自分の得意分野や自信を持ちつつ、成長意欲や謙虚さのある方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏢 基本出社</span><span class="pill">✅ 副業可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://digdig.inc/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://note.com/seungjun/n/n75ef2e0880ef" target="_blank">📝 代表note</a></div>
+</div></div>
+
+<div class="card" id="k3"><div class="card-inner">
+  <div class="badges"><span class="badge">事業開発</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">株式会社パンクチュアル</div>
+  <div class="co-url"><a href="https://punctual.co.jp/" target="_blank">https://punctual.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒785-0036 高知県須崎市緑町1-12</td></tr><tr><th>東京オフィス</th><td>〒104-0061 東京都中央区銀座6-10-1-13F　WeWork ギンザシックス</td></tr><tr><th>設立</th><td>2020年3月</td></tr><tr><th>上場区分</th><td>未上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">2020年3月に高知県須崎市で設立されたスタートアップ企業です。「世界と戦える地域を創る」をミッションに、「本当の地方創生」の実現を目指しています。主要事業はふるさと納税支援で、EC事業やPR事業なども手掛けています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>2020年3月に高知県須崎市で設立されたスタートアップ企業です。「世界と戦える地域を創る」をミッションに、「本当の地方創生」の実現を目指しています。主要事業はふるさと納税支援で、EC事業やPR事業なども手掛けています。</p><p>最大の特徴は、自治体に営業所を設け担当社員が移住する「伴走型」支援モデルです。元公務員が多数在籍し、制度活用、新特産品開発、ウェブ戦略まで包括的にサポートします。単なる業務代行に留まらない、地域を巻き込んだ独自のモデルで目覚ましい成果を上げています。</p><p>この独自の取り組みにより、令和6年度には支援した18自治体すべてで前年を上回る寄附額増加を達成。パンクチュアル支援自治体の平均成長率は189%・約275億円に達し、約83億円の寄附増に貢献しています。特に、銚子市は2年で約3億円から約26.5億円へ急成長し千葉県内1位を獲得。須崎市は約37億円で中四国1位を連続達成しました。現在、支援自治体は42に増加し、すべての自治体で前年割れを一度も出していません。自治体の財源確保だけでなく、地域が自力で成長できる仕組みづくりを目指しています。</p><p><strong>代表取締役　守時 健氏</strong><br>1986年生まれ。大学の頃に高知県須崎市を旅行したことがきっかけで市職員となり、自ら手がけたマスコットキャラクター「しんじょう君」が2016年の「ゆるキャラグランプリ」で頂点に。ふるさと納税の寄付額も年間10億円に引き上げる。８年勤めた市職員を辞め2020年3月にパンクチュアルを設立。その人柄は、ユニークな発想と行動力で「日本一バズる公務員」とも称され、SNSを駆使した情報発信力に長けています。ユーモアある人柄が魅力で、各メディアでのインタビューでは冗談を交えながらも、地方創生への熱い思いを語っています。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 事業開発</div>
+          <div class="job-preview">地域おこし協力隊の事業承継戦略から梨園・ハンバーグ工場建設など新事業推進まで幅広いプロジェクトを牽引するポジションです。</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p>地域おこし協力隊の事業承継戦略の立案から、梨園やハンバーグ工場建設といった、新たな事業の具体的な推進まで、幅広いプロジェクトを牽引していただきます。漁師から農家、ラーメン屋まで、無限に広がる事業領域で事業計画を立てられる、数字に強くプロジェクトマネジメント能力に長けた人材を求めています。</p><p><strong>業務内容</strong></p><ul><li>新規事業のテーマ検索、事業性評価</li><li>実証実験、MVP開発</li><li>アライアンス、資本業務提携の実行</li><li>補助金活用、共同研究推進</li><li>新規事業の収益化、撤退判断　など</li></ul>
+        <div class="meta-pills"><span class="pill">📍 その他勤務地</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://punctual.co.jp/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://drive.google.com/file/d/1npbbZTod185a2-jouoAjjftOlwr_HMO_/view?usp=sharing" target="_blank">📄 会社資料</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが藤田陽大 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
